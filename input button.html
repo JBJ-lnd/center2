@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>사슴에 관하여</title>
+</head>
+<body>
+  <input type="button" value = "ABC" onclick="showMessage()">
+  <input type="button" value = "RED" onclick="background_red()">
+  <input type="button" value = "YELLOW" onclick="background_yellow()">
+  <input type="button" value = "GREEN" onclick="background_green()">
+  <script>
+    function background_red() {
+      document.body.style.background = "red";
+    }
+    function background_yellow() {
+      document.body.style.background = "yellow";
+    }
+    function background_reen() {
+      document.body.style.background = "green";
+    }
+    function showMessage() {
+      alert("Message");
+    }
+    for (const elem of document.body.children) {
+      alert(elem.text);
+    }
+  </script>>
+  <a>
+    사슴은 아름다운 동물입니다
+  </a>
+</body>
+</html>
