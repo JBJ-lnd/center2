@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>사슴에 관하여</title>
+</head>
+<body>
+  <input type="text" id="color">
+  <input type="text" id="color2">
+  <input type="text" id="color3">
+  <input type="button" value = "change!"
+    onclick = "backgroundcolorChangeToColorTextInput()">;
+  <script>
+    function backgroundcolorChangeToColorTextInput() {
+      let typedColor = document.getElementById("color");
+      alert(typedColor.value);
+      setTimeout(() => document.body.style.background = typedColor.value, 1000);
+    
+      let typedColor2 = document.getElementById("color2");
+      alert(typedColor2.value);
+      setTimeout(() => document.body.style.background = typedColor2.value, 2000);
+
+      let typedColor3 = document.getElementById("color3");
+      alert(typedColor3.value);
+      setTimeout(() => document.body.style.background = typedColor3.value, 3000);
+      
+      /*if(typedColor.value === "red") {
+        document.body.style.background = typedColor.value;
+      }else if (typedColor.value === "blue") {
+        document.body.style.background = typedColor.value;
+      }else if(typedColor.value === "yellow") {
+        document.body.style.background = typedColor.value;
+      }
+       else {
+          alert("red, blue, yellow 중 하나로 입력해주세요.") 
+      }*/
+    }
+  </script>>
+  <a>
+    사슴은 아름다운 동물입니다
+  </a>
+</body>
+</html>
