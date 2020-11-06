@@ -9,6 +9,8 @@
   <input type="text" id="color3">
   <input type="button" value = "change!"
     onclick = "backgroundcolorChangeToColorTextInput()">;
+  <input type="button" value = "none"
+    onclick = "none()">;
   <script>
     function backgroundcolorChangeToColorTextInput() {
       let typedColor = document.getElementById("color");
@@ -33,6 +35,16 @@
        else {
           alert("red, blue, yellow 중 하나로 입력해주세요.") 
       }*/
+    }
+    function none() {
+      let typedColor4 = document.getElementById("color");
+      typedColor4.value = "";
+
+      let typedColor5 = document.getElementById("color2");
+      typedColor5.value = "";
+
+      let typedColor6 = document.getElementById("color3");
+      typedColor6.value = "";
     }
   </script>>
   <a>
