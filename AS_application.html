@@ -1,0 +1,91 @@
+<!-- # 1. AS 신청서를 만들어라
+# 2. 폼의 구성은 이름, 이메일, 제목, 설명으로 이루어진다
+# 3. 이름은 2~10글자 사이어야 한다
+# 4. 이메일은 @가 하나만 들어가있어야 한다
+# 5. 제목은 포멧을 "[분류] 제목명" 과 같이 적는것을 기본으로 하며, 제출 버튼을 눌렀을때 자동으로 분류가 출력되어야 한다
+# 6. 설명은 최대 100글자까지만 작성할수 있다
+# 7. 제출 버튼과 다시쓰기 버튼을 만들어야 합니다
+
+# @ 의 개수는 String.split("@") 을 통해 나눠, 몇개가 들어가 있는지 알 수 있다
+# 제목의 경우에는 해당 문자열을 for 문으로 돌며, [] 로 되어 있는지 확인할수 있다 -->
+<!DOCTYPE HTML>
+<html>
+<body>
+    <p>이름</p>
+    <input type="text" placeholder="이름을 입력해주세요." id="name">
+
+    <p>이메일</p>
+    <input type="text" placeholder="이메일을 입력해주세요." id="email">
+    
+    <p>제목</p>
+    <input type="text" placeholder="제목을 입력해주세요." id="title">
+    
+    <p>설명</p>
+    <input type="text" placeholder="설명" id="ex"> </br></br>
+    
+    <input type="button" value="제출" onclick="submission()">
+    <input type="button" value="다시쓰기" onclick="re()">
+
+    <script>
+        function getCountOfStringInclude(target_string, find_string) {
+            let count = 0;
+            for (const char of target_string) {
+                if (char === find_string) {
+                    count ++;
+                }
+            }
+            return count;
+        }
+
+        function getMidTitleOfTitle(title) {
+            let isEnterMidTitleSection = false;
+            let returnString = "";
+            for (const char of title) {
+                if (char === "[") {
+                    isEnterMidTitleSection = true;
+                }
+                else if (char === "]") {
+                    return returnString;
+                }
+                else if (isEnterMidTitleSection) {
+                    returnString += char
+                }
+            }
+        }
+
+        function submission() {
+            const name = document.getElementById("name").value;
+            if (2 > name.length || name.length > 10) {
+                alert("이름은 2글자에서 10글자 사이어야만 합니다.");
+                return false;
+            }
+            
+            const email = document.getElementById("email").value;
+            if (email.indexOf("@") !== email.lastIndexOf("@")) {
+                alert("이메일은 @가 하나만 들어가 있어야 합니다.");
+                return false;
+            }
+
+            const ex = document.getElementById("ex").value;
+            if (ex.length >= 100) {
+                alert("설명은 최대 100글자까지만 작성할 수 있습니다.");
+                return false;
+            }   
+            
+            const title = document.getElementById("title").value;
+            if (!(title.includes("[") && title.includes("]"))) {
+                alert("[분류] 제목명 과 같은 포멧으로 작성하여야 합니다")
+            }
+
+            alert(`${getMidTitleOfTitle(title)} 로 선택되었습니다!`);
+
+        }
+
+        function re() {
+            for (const element of document.querySelectorAll(`input[type=text]`)) {
+                element.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
