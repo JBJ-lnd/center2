@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <p>회원가입</p>
+
+    <p>이름</p>
+    <input type="text" placeholder="이름을 입력해주세요." id="name">
+
+    <p>아이디</p>
+    <input type="text" placeholder="아이디를 입력해주세요." id="id">
+
+    <p>비밀번호</p>
+    <input type="text" placeholder="비밀번호를 입력해주세요." id="password">
+
+    <p>주민등록번호</p>
+    <input type="text" placeholder="******" id="num1"> 
+    <input type="text" placeholder="*" id="num2"> </br></br>
+    
+    <input type="button" value="완료" onclick="finish()">
+    <input type="button" value="다시쓰기" onclick="re()">
+
+    <script>
+        function finish() {
+            const name = document.getElementById("name").value;
+            if (2 > name.length || name.length > 10) {
+                alert("이름은 2글자에서 10글자 사이어야만 합니다.");
+                return false;
+            }
+
+            const password = document.getElementById("password").value;
+            if (isIncludSpecialCharacters(password) && password.length < 8) {
+                alert("비밀번호는 특수문자(?!@_) 중 하나를 포함하여야 하고, 8글자 이상이어야 합니다.");
+                return false;
+            }
+
+            const prenum1 = document.getElementById("num1").value;
+            const postnum2 = document.getElementById("num2").value;
+
+            if (prenum1.length !== 6 || postnum2.length !== 1 || isNaN(prenum1) || isNaN(postnum2)) {
+                alert("주민등록번호의 첫번째 박스는 6글자여야 하고, 두번째 박스는 1글자여야 합니다.");
+                return false;
+            }
+
+            alert ("회원가입에 성공하였습니다!");
+            return false;
+      }
+
+        function isIncludSpecialCharacters(password, special_characters) {
+            for (const special_characters of special_characters) {
+                if (password.includes(special_characters)) {
+                    return true;
+            }
+          }
+          return password.includes("?") || password.includes("!")|| password.includes("@") || password.includes("_")
+      }
+
+        function re() {
+            for (const element of document.querySelectorAll(`input[type=text]`)) {
+		        element.value = '';
+        }
+      }
+    </script>
+</body> 
+</html>
