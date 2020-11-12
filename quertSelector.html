@@ -15,10 +15,8 @@
 		}
 		
 		function search_button() {  // search1 id 를 가진 input 의 값을 가져와 쿼리 셀렉터로 찾아옴 
-			let search_condition = document.getElementById("search1").value;
-			
-			for (const element of document.querySelectorAll(`input[name*=${search_condition}]`)) {
-				alert(element.value);
+			for (const element of document.querySelectorAll(`input[type=text]`)) {
+				element.value = '';
 			}
 		}
 	</script>
